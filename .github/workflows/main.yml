@@ -1,0 +1,10 @@
+name: cppcheck
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install gtest manually
+      run: sudo apt-get install cppcheck && cppcjeck --version
