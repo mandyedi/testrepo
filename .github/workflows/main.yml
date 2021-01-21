@@ -13,12 +13,15 @@ jobs:
         repository: danmar/cppcheck
         ref: '2.3'
         path: './cppcheck'
-    - name: Build cppcheck
-      run: |
-        cd /home/runner/work/testrepo/testrepo/cppcheck
-        mkdir build && cd build
-        cmake ..
-        make
-        cp -r ../cfg ./bin
-        ls ./bin
-        ls ./bin/cfg
+    - name: Test path
+      run: pwd
+       
+#     - name: Build cppcheck
+#       run: |
+#         cd /home/runner/work/testrepo/testrepo/cppcheck
+#         mkdir build && cd build
+#         cmake ..
+#         make
+#         cp -r ../cfg ./bin
+#         ls ./bin
+#         ls ./bin/cfg
