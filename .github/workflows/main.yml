@@ -6,7 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Upgrade then install
-      run: sudo apt-get update && sudo apt-get upgrade -y && install cppcheck
-    - name: Get version
-      run: sudo apt-get cppcheck --version
+    - uses: actions/checkout@v2
+    - name: Checkout cppcheck
+      uses: actions/checkout@v2
+      with:
+        repository: danmar/cppcheck
+        ref: '2.3'
+        path: './cppcheck'
+    - name: Build cppcheck
+      run: |
+        cd /home/runner/work/testrepo/testrepo/cppcheck
+        mkdir build && cd build
+        cmake ..
+        make
+        cp -r ../cfg ./bin
+        ls ./bin
+        ls ./bin/cfg
