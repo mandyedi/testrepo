@@ -7,6 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Upgrade then install
-      run: sudo apt-get update && apt-get upgrade -y && install cppcheck
+      run: sudo apt-get update && sudo apt-get upgrade -y && install cppcheck
     - name: Get version
       run: sudo apt-get cppcheck --version
