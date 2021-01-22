@@ -33,4 +33,3 @@ jobs:
         author_email: mandyedi@gmail.com
         message: 'Automated commit: update cppcheck report'
         add: './cppcheck_report.txt'
-        pull_strategy: '--rebase'
