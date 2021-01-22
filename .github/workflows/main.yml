@@ -13,17 +13,15 @@ jobs:
         repository: danmar/cppcheck
         ref: '2.3'
         path: './cppcheck'
-    - name: Test path
-      run: cd cppcheck
-    - name: Test
-      run: pwd
-       
-#     - name: Build cppcheck
-#       run: |
-#         cd /home/runner/work/testrepo/testrepo/cppcheck
-#         mkdir build && cd build
-#         cmake ..
-#         make
-#         cp -r ../cfg ./bin
-#         ls ./bin
-#         ls ./bin/cfg
+    - name: Build cppcheck
+      run: |
+        cd cppcheck
+        mkdir build && cd build
+        cmake ..
+        make
+        cp -r ../cfg ./bin
+    - name: Run cppcheck
+      run: |
+        cd cppcheck/build/bin
+        ./cppcheck ../../../test.cpp --enable=all --max-ctu-depth=4 --output-file=../../../report_cppcheck.txt --language=c++ --std=c++17
+        cat ../../../report_cppcheck.txt
