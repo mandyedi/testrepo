@@ -1,0 +1,8 @@
+../../../test.cpp:4:6: error: Array 'a[10]' accessed at index 10, which is out of bounds. [arrayIndexOutOfBounds]
+    a[10] = 0;
+     ^
+../../../test.cpp:4:11: style: Variable 'a[10]' is assigned a value that is never used. [unreadVariable]
+    a[10] = 0;
+          ^
+ 
+Cppcheck 2.3
