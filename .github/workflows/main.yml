@@ -26,3 +26,8 @@ jobs:
         ./cppcheck ../../../test.cpp --enable=all --max-ctu-depth=4 --output-file=../../../cppcheck_report.txt --language=c++ --std=c++17
         echo ' ' >> ../../../cppcheck_report.txt && ./cppcheck --version >> ../../../cppcheck_report.txt
         cat ../../../cppcheck_report.txt
+    - name: Push report
+      run: |
+        git add ./cppcheck_report.txt
+        git commit -m "Automated commit: Update cppcheck report"
+        git push origin master
