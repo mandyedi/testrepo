@@ -23,5 +23,6 @@ jobs:
     - name: Run cppcheck
       run: |
         cd cppcheck/build/bin
-        ./cppcheck ../../../test.cpp --enable=all --max-ctu-depth=4 --output-file=../../../report_cppcheck.txt --language=c++ --std=c++17
-        cat ../../../report_cppcheck.txt
+        ./cppcheck ../../../test.cpp --enable=all --max-ctu-depth=4 --output-file=../../../cppcheck_report.txt --language=c++ --std=c++17
+        echo ' ' >> ../../../cppcheck_report.txt && ./cppcheck --version >> ../../../cppchec_report.txt
+        cat ../../../cppchec_report.txt
