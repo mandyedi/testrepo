@@ -23,7 +23,7 @@ jobs:
     - name: Run cppcheck
       run: |
         cd cppcheck/build/bin
-        ./cppcheck ../../../test.cpp --enable=all --max-ctu-depth=4 --output-file=../../../cppcheck_report.txt --language=c++ --std=c++17
+        ./cppcheck ../../../test.cpp --enable=all --max-ctu-depth=4 --output-file=../../../cppcheck_report.txt --language=c++ --std=c++17 --suppress=missingIncludeSystem
         echo ' ' >> ../../../cppcheck_report.txt && ./cppcheck --version >> ../../../cppcheck_report.txt
         cat ../../../cppcheck_report.txt
     - name: Commit changes
