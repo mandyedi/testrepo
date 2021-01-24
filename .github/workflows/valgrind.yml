@@ -28,4 +28,7 @@ jobs:
         message: 'Automated commit: update valgrind report'
         add: './valgrind_report.txt'
     - name: Set workflow status
-      run: grep -q 'All heap blocks were freed' ./valgrind_report.txt && exit 1
+      run: |
+        grep -q 'All heap blocks were freed' ./valgrind_report.txt && exit 0
+        exit 1
+      
