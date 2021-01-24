@@ -2,8 +2,7 @@
 
 int main()
 {
-    char a[10];
-    a[9] = 0;
-    std::cout << a[9];
+	std::cout << "hello\n";
+    int *p = new int;
     return 0;
 }
