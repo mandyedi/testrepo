@@ -1,2 +1,5 @@
+../../../test.cpp:6:10: style: Variable 'p' is allocated memory that is never used. [unusedAllocatedMemory]
+    int *p = new int;
+         ^
  
 Cppcheck 2.3
