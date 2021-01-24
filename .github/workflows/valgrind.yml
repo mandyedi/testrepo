@@ -19,7 +19,7 @@ jobs:
     - name: Run valgrind
       run: |
         cd build
-        valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=../valgrind-report.txt ./test
+        valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=../valgrind_report.txt ./test
     - name: Commit changes
       uses: EndBug/add-and-commit@v7
       with:
@@ -27,5 +27,5 @@ jobs:
         author_email: mandyedi@gmail.com
         message: 'Automated commit: update valgrind report'
         add: './valgrind_report.txt'
-    - name: Se workflow status
+    - name: Set workflow status
       run: grep -q 'All heap blocks were freed' ./valgrind-report.txt && exit 1
