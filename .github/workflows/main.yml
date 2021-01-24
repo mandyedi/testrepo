@@ -16,7 +16,6 @@ jobs:
         path: './cppcheck'
     - name: Build cppcheck
       run: |
-        exit 1
         cd cppcheck
         mkdir build && cd build
         cmake ..
