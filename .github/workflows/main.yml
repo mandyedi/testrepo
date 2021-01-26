@@ -21,8 +21,7 @@ jobs:
         cmake ..
         make
         cp -r ../cfg ./bin
-        export PATH=$PATH:./bin/cppcheck
     - name: Run cppcheck
       run: |
-        cppcheck test.cpp --enable=all --max-ctu-depth=4 --output-file=cppcheck_report.txt --language=c++ --std=c++17 --suppress=missingIncludeSystem
+        cppcheck/build/bin/cppcheck test.cpp --enable=all --max-ctu-depth=4 --output-file=cppcheck_report.txt --language=c++ --std=c++17 --suppress=missingIncludeSystem
         cat cppcheck_report.txt
