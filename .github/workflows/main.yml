@@ -21,16 +21,8 @@ jobs:
         cmake ..
         make
         cp -r ../cfg ./bin
+        export PATH=$PATH:./bin/cppcheck
     - name: Run cppcheck
       run: |
-        cd cppcheck/build/bin
-        ./cppcheck ../../../test.cpp --enable=all --max-ctu-depth=4 --output-file=../../../cppcheck_report.txt --language=c++ --std=c++17 --suppress=missingIncludeSystem
-        echo ' ' >> ../../../cppcheck_report.txt && ./cppcheck --version >> ../../../cppcheck_report.txt
-        cat ../../../cppcheck_report.txt
-    - name: Commit changes
-      uses: EndBug/add-and-commit@v7
-      with:
-        author_name: mandyedi
-        author_email: mandyedi@gmail.com
-        message: 'Automated commit: update cppcheck report'
-        add: './cppcheck_report.txt'
+        cppcheck test.cpp --enable=all --max-ctu-depth=4 --output-file=cppcheck_report.txt --language=c++ --std=c++17 --suppress=missingIncludeSystem
+        cat cppcheck_report.txt
