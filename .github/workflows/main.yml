@@ -6,22 +6,12 @@ jobs:
   build:
     if: "!contains(github.event.commits[0].message, '#skipcppcheck')"
     runs-on: ubuntu-latest
+    container:
+      image: cppcheck-docker:latest
     steps:
     - uses: actions/checkout@v2
-    - name: Checkout cppcheck
-      uses: actions/checkout@v2
-      with:
-        repository: danmar/cppcheck
-        ref: '2.3'
-        path: './cppcheck'
-    - name: Build cppcheck
-      run: |
-        cd cppcheck
-        mkdir build && cd build
-        cmake ..
-        make
-        cp -r ../cfg ./bin
     - name: Run cppcheck
       run: |
-        cppcheck/build/bin/cppcheck test.cpp --enable=all --max-ctu-depth=4 --output-file=cppcheck_report.txt --language=c++ --std=c++17 --suppress=missingIncludeSystem
+        cppcheck --version
+        cppcheck test.cpp --enable=all --max-ctu-depth=4 --output-file=cppcheck_report.txt --language=c++ --std=c++17 --suppress=missingIncludeSystem
         cat cppcheck_report.txt
